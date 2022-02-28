@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import Home from "../views/Home.vue";
+import Home from "../pages/Home.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -14,7 +14,37 @@ const routes: Array<RouteRecordRaw> = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+      import(/* webpackChunkName: "about" */ "../pages/About.vue"),
+  },
+  {
+    path: "/sandbox",
+    name: "Sanbox",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../pages/Sanbox.vue"),
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: () =>
+      import(/* webpackChunkName: "Login" */ "../pages/Login.vue"),
+  },
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    component: () =>
+      import(/* webpackChunkName: "Dashboard" */ "../pages/Dashboard.vue"),
+  },
+  {
+    path: "/users",
+    name: "Users",
+    component: () =>
+      import(/* webpackChunkName: "Dashboard" */ "../pages/Users.vue"),
+  },
+  {
+    path: "/settings",
+    name: "Settings",
+    component: () =>
+      import(/* webpackChunkName: "Dashboard" */ "../pages/Settings.vue"),
   },
 ];
 

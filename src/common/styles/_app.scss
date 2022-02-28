@@ -1,0 +1,6 @@
+@import 'appIcon';
+@import 'scrollbar';
+
+html {
+  @extend .fancy-scroll
+}
