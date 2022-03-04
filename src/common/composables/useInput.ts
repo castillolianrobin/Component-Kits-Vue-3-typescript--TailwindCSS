@@ -14,7 +14,7 @@ export const inputPropsDefault: InputProps = {
 export const inputProps = {
   /** used for V-model */
   modelValue: {
-    type: [String, Number, undefined] as unknown as PropType<
+    type: [String, Number, Array, Object, undefined] as unknown as PropType<
       InputProps["modelValue"]
     >,
     required: true,
