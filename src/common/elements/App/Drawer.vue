@@ -14,7 +14,7 @@
         <!-- Drawer -->
         <div
           class="drawer-container h-full bg-white shadow-lg z-50 relative block"
-          :style="{ width: drawerWidth }"
+          :style="`--drawer-container-width: ${drawerWidth}`"
         >
           <slot></slot>
         </div>
@@ -53,6 +53,9 @@ function updateModelValue(flag: boolean) {
 </script>
 
 <style lang="scss" scoped>
+.drawer-container {
+  width: var(--drawer-container-width);
+}
 .drawer {
   &-enter-active,
   &-leave-active {

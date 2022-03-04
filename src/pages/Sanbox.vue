@@ -43,20 +43,20 @@
     </div>
 
     <div class="m-4">
-      <AppFormInput validateOnChange validations="" error="test"></AppFormInput>
+      <Form.Input validateOnChange validations="" error="test"></Form.Input>
       <h2 class="mb-2 underline font-bold">FORM SAMPLE:</h2>
-      <AppForm v-model="form">
-        <AppFormInputBase
+      <Form.Form v-model="form">
+        <Form.Input
           v-model="test"
           validateByForm
           validateOnChange
           name="Test"
           label="Label Here"
           validations="required"
-        ></AppFormInputBase>
+        ></Form.Input>
         <div class="mt-2">
-          <AppFormCheckbox v-model="checkbox" label="test"></AppFormCheckbox>
-          <AppFormCheckbox
+          <Form.Checkbox v-model="checkbox" label="test"></Form.Checkbox>
+          <Form.Checkbox
             v-model="checkboxItem"
             primaryLabel="checkbox"
             :items="[
@@ -64,21 +64,21 @@
               { value: 'asdad', label: 'asdaTest Value' },
             ]"
           >
-          </AppFormCheckbox>
-          <AppFormRadio
+          </Form.Checkbox>
+          <Form.Radio
             v-model="checkboxItem"
             primaryLabel="radio"
             :items="[
               { value: 'Test', label: 'Test Value' },
               { value: 'asdad', label: 'asdaTest Value' },
             ]"
-          ></AppFormRadio>
+          ></Form.Radio>
           <!-- <AppFormCheckbox v-model="checkTest" value="toinks" label="asdad"></AppFormCheckbox> -->
           <!-- <AppFormRadio></AppFormRadio> -->
           checkbox items: {{ checkboxItem }}
         </div>
 
-        <AppFormSelect
+        <Form.Select
           v-model="formSelect"
           label="Select"
           :items="[
@@ -90,9 +90,9 @@
             { value: 'asadas', text: 'asdasd 3' },
             { value: 'asadas', text: 'asdasdsa 3' },
           ]"
-        ></AppFormSelect>
+        ></Form.Select>
 
-        <AppDropdown
+        <App.Dropdown
           label="dropdown"
           :items="[
             { value: 'asdas', text: 'asdasd' },
@@ -104,40 +104,37 @@
             { value: 'asadas', text: 'asdasdsa 3' },
           ]"
         >
-        </AppDropdown>
-        <AppFormInputItems
-          v-model="formItems"
-          label="asdas"
-        ></AppFormInputItems>
-        <AppFormFile
+        </App.Dropdown>
+        <Form.ItemsInput v-model="formItems" label="asdas"></Form.ItemsInput>
+        <Form.FileInput
           v-model="formFile"
           label="adas"
           validations="required"
           validateOnChange
-        ></AppFormFile>
+        ></Form.FileInput>
         {{ formFile }}
-        <AppFormInputDate v-model="formDate"></AppFormInputDate>
+        <Form.DatePicker v-model="formDate"></Form.DatePicker>
         {{ formDate }}
-        <AppFormInputDecimal v-model="formDecimal"></AppFormInputDecimal>
-        <AppFormInput v-model="formDecimal"></AppFormInput>
+        <Form.TextField type="decimal" v-model="formDecimal"></Form.TextField>
+        <Form.Input v-model="formDecimal"></Form.Input>
         {{ formDecimal }}
-        <AppFormTextArea v-model="formArea"></AppFormTextArea>
-        <AppBtn submit>Submit</AppBtn>
-      </AppForm>
+        <Form.TextArea v-model="formArea"></Form.TextArea>
+        <App.Btn submit>Submit</App.Btn>
+      </Form.Form>
 
-      <AppModal v-model="modal">
+      <App.Modal v-model="modal">
         test
         <XIcon @click="modal = false"></XIcon>
-      </AppModal>
-      <AppBtn @click="modal = !modal">Toggle Modal</AppBtn>
-      <AppPagination
+      </App.Modal>
+      <App.Btn @click="modal = !modal">Toggle Modal</App.Btn>
+      <App.Pagination
         v-model:currentPage="page"
         :pageVisible="4"
         :itemsPerPage="1"
         :total="23"
-      ></AppPagination>
+      ></App.Pagination>
 
-      <AppTable
+      <App.Table
         hoverable
         v-model:currentPage="tablePage"
         :headers="['header1', 'header2', 'header3']"
@@ -154,15 +151,15 @@
           { header1: 'item 2', header2: 'item 3', header3: 'item 5' },
           { header1: 'item 2', header2: 'item 3', header3: 'item 5' },
         ]"
-      ></AppTable>
+      ></App.Table>
 
-      <AppBtn @click="tablePage = 1">{{ tablePage }}</AppBtn>
+      <App.Btn @click="tablePage = 1">{{ tablePage }}</App.Btn>
 
-      <AppTabs
+      <App.Tabs
         v-model="tabIndex"
         :items="['tab 1', 'tab 2', 'tab 3']"
-      ></AppTabs>
-      <AppTooltip tooltipText="sfsfsfs asda ad add ad asd" direction="right">
+      ></App.Tabs>
+      <App.Tooltip tooltipText="sfsfsfs asda ad add ad asd" direction="right">
         <template v-slot:content>
           <div class="text-xs text-white">
             <p>1asdadad</p>
@@ -174,17 +171,17 @@
             <p>7dfgd dfgdf gasdadad</p>
           </div>
         </template>
-      </AppTooltip>
-      <AppSteps
+      </App.Tooltip>
+      <App.Steps
         v-model="step"
         :stepText="['Step 1', 'Step 2', 'Step 3']"
-      ></AppSteps>
+      ></App.Steps>
 
-      <AppDrawer v-model="drawer">
+      <App.Drawer v-model="drawer">
         <p>Drawer here</p>
-      </AppDrawer>
+      </App.Drawer>
 
-      <AppBtn @click="drawer = !drawer">Toggle drawer</AppBtn>
+      <App.Btn @click="drawer = !drawer">Toggle drawer</App.Btn>
     </div>
 
     <Form.Input
@@ -218,8 +215,16 @@
     ></Form.TextField>
     <Form v-model="multi" label="items"></Form>
     <Form.ItemsInput v-model="multi" label="items"></Form.ItemsInput>
-    <Form.TextField v-model="test" label="asdad" error="asdad"></Form.TextField>
-    <Form.TextArea v-model="test" label="asdad" error="asdad"></Form.TextArea>
+    <Form.TextField
+      v-model="test"
+      label="TextField"
+      error="Error text"
+    ></Form.TextField>
+    <Form.TextArea
+      v-model="test"
+      label="TextArea"
+      error="Error text"
+    ></Form.TextArea>
     <Form.DatePicker v-model="dates" label="dates"></Form.DatePicker>
   </div>
 </template>
@@ -235,15 +240,15 @@ const multi = ref([]);
 const dates = ref("");
 const pagination = ref(1);
 
-const checkbox = ref();
-const checkboxItem = ref();
-const formSelect = ref();
+const checkbox = ref("");
+const checkboxItem = ref("");
+const formSelect = ref("");
 const form = ref(false);
 const formItems = ref(["asdas", "asdad"]);
-const formFile = ref();
-const formDate = ref();
-const formDecimal = ref();
-const formArea = ref();
+const formFile = ref([]);
+const formDate = ref("");
+const formDecimal = ref(0);
+const formArea = ref("");
 const modal = ref(false);
 const page = ref(22);
 const tablePage = ref(1);
