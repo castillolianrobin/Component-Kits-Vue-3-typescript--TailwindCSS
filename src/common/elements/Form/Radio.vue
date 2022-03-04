@@ -85,7 +85,12 @@ const props = defineProps({
   ...inputProps,
   ...inputBaseProps,
   ...validationProps,
-  modelValue: { type: Boolean as PropType<boolean>, default: false },
+  modelValue: {
+    type: [Boolean, Array, String, Number, undefined] as PropType<
+      boolean | string | number | unknown[] | unknown
+    >,
+    default: false,
+  },
   primaryLabel: { type: String as PropType<string>, default: null },
   items: { type: Array as PropType<Array<ItemProp>>, default: () => [] }, // [ { value: '', label: '' }, ]
 });
@@ -95,7 +100,7 @@ const emit = defineEmits([modelValueEvent, validEvent]);
 
 /** HOOKS */
 //useInput hook
-const { updateModelValue } = useInput(emit);
+const { updateModelValue: _updateModelValue } = useInput(emit);
 //useValidation hook
 const { modelValue } = toRefs(props);
 const { isRequired, errorMessage } = useValidation(modelValue, props, emit);
@@ -119,9 +124,7 @@ const dataSet = computed<DataSetItem[]>((): DataSetItem[] => {
       (item): DataSetItem => ({
         value: item.value,
         label: item.label,
-        isChecked:
-          Array.isArray(props.modelValue) &&
-          props.modelValue.includes(item.value),
+        isChecked: props.modelValue === item.value,
       })
     );
   } else {
@@ -138,5 +141,18 @@ interface DataSetItem {
   value: unknown;
   label: string;
   isChecked: boolean;
+}
+
+/**
+ * Extends the useInput's updateModelValue
+ * @param { String } value - The value to be added/removed to the modelValue
+ *                          (to be used when there are multiple checkboces)
+ */
+function updateModelValue(value: unknown = null) {
+  if (isMultiple.value) {
+    _updateModelValue(value);
+  } else {
+    _updateModelValue(!props.modelValue);
+  }
 }
 </script>

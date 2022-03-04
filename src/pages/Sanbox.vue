@@ -66,7 +66,7 @@
           >
           </Form.Checkbox>
           <Form.Radio
-            v-model="checkboxItem"
+            v-model="radio"
             primaryLabel="radio"
             :items="[
               { value: 'Test', label: 'Test Value' },
@@ -240,8 +240,9 @@ const multi = ref([]);
 const dates = ref("");
 const pagination = ref(1);
 
-const checkbox = ref("");
-const checkboxItem = ref("");
+const checkbox = ref(false);
+const checkboxItem = ref([]);
+const radio = ref("something");
 const formSelect = ref("");
 const form = ref(false);
 const formItems = ref(["asdas", "asdad"]);
