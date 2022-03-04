@@ -85,12 +85,6 @@ const props = defineProps({
   ...inputProps,
   ...inputBaseProps,
   ...validationProps,
-  modelValue: {
-    type: [Boolean, Array, String, Number, undefined] as PropType<
-      boolean | string | number | unknown[] | unknown
-    >,
-    default: false,
-  },
   primaryLabel: { type: String as PropType<string>, default: null },
   items: { type: Array as PropType<Array<ItemProp>>, default: () => [] }, // [ { value: '', label: '' }, ]
 });
@@ -132,7 +126,7 @@ const dataSet = computed<DataSetItem[]>((): DataSetItem[] => {
       {
         value: null,
         label: props.label || "",
-        isChecked: props.modelValue,
+        isChecked: !!props.modelValue,
       },
     ];
   }
