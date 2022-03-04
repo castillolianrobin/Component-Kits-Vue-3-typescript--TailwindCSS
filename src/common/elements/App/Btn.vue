@@ -19,7 +19,7 @@
           }`,
       {
         'text-xl rounded-lg': props.lg,
-        'text-xs rounded-sm': props.sm,
+        'text-xs rounded': props.sm,
       },
     ]"
     v-bind="$attrs"

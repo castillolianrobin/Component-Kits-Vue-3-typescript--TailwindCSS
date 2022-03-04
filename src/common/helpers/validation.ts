@@ -17,17 +17,49 @@ export function required(name = ""): Validation {
 }
 
 /**
+ * Validates if field should be number is atleast a certain number minimum
+ *
+ * @param min Minimum number
+ * @param name Name of the field
+ * @returns boolean: true | string: error message
+ */
+export function min(min: number, name = ""): Validation {
+  return (value, fieldName = name) => {
+    return (
+      parseFloat(value) >= min ||
+      `${fieldName || "This"} field must be equal or greater than ${min}.`
+    );
+  };
+}
+
+/**
+ * Validates if field should be number not exceed the given maximum number
+ *
+ * @param max Maximum number
+ * @param name Name of the field
+ * @returns boolean: true | string: error message
+ */
+export function max(max: number, name = ""): Validation {
+  return (value, fieldName = name) => {
+    return (
+      parseFloat(value) <= max ||
+      `${fieldName || "This"} field must be equal or less than ${max}.`
+    );
+  };
+}
+
+/**
  * Validates if field should be atleast a certain number of character long
  *
  * @param count Number of minimum character
  * @param name Name of the field
  * @returns boolean: true | string: error message
  */
-export function min(count: number, name = ""): Validation {
-  return (value: string) => {
+export function minLength(count: number, name = ""): Validation {
+  return (value, fieldName = name) => {
     return (
-      value.length > count ||
-      `${name || "This"} field must be atleast ${count} characters long.`
+      (value && value.length >= count) ||
+      `${fieldName || "This"} field must be atleast ${count} characters long.`
     );
   };
 }
@@ -39,11 +71,11 @@ export function min(count: number, name = ""): Validation {
  * @param name Name of the field
  * @returns boolean: true | string: error message
  */
-export function max(count: number, name = ""): Validation {
-  return (value: string) => {
+export function maxLength(count: number, name = ""): Validation {
+  return (value, fieldName = name) => {
     return (
-      value.length < count ||
-      `${name || "This"} field must not exceed ${count} characters long.`
+      (value && value.length < count) ||
+      `${fieldName || "This"} field must not exceed ${count} characters long.`
     );
   };
 }
@@ -92,6 +124,69 @@ export function noNumber(name = ""): Validation {
     return (
       /^([^0-9]*)$/.test(value) ||
       `${name || "This"} field shouldn't have any number character`
+    );
+  };
+}
+
+/**
+ * ==============================================================
+ * SPECIAL RULE NAMING FUNCTION
+ * ==============================================================
+ */
+// export function nameValidations(name, validations) {
+//   return validations.map(validation => )
+// }
+
+/**
+ * Validates that field is required
+ *
+ * @param name Name of the field
+ * @returns boolean: true | string: error message
+ */
+export function matchString(
+  stringMatch: string,
+  stringFieldName = "",
+  name = ""
+): Validation {
+  return (value, fieldName = name) => {
+    console.log(value, stringMatch);
+    return (
+      value === stringMatch ||
+      `${fieldName || "This"} field should match with${
+        `${stringFieldName} field` || "The string"
+      }`
+    );
+  };
+}
+
+/**
+ * Validates that field is a valid US phone number
+ * Valid formats:
+ *  +1 123 4567890
+ *  +11234567890
+ *  +1(123)4567890
+ *  +1(123)456-7890
+ *  +1 (123) 456-7890
+ *  +1 (123)456 7890
+ *  +1 123 456-7890
+ *  +1 123 456 7890
+ *  +1 123-456-7890
+ *  123-456-7890
+ *  123 456-7890
+ *  123 456 7890
+ *  123 4567890
+ *  1234567890
+ *
+ * @see https://stackoverflow.com/questions/4338267/validate-phone-numberwith-javascript
+ *
+ * @param name Name of the field
+ * @returns boolean: true | string: error message
+ */
+export function usPhoneNum(name = ""): Validation {
+  return (value, fieldName = name) => {
+    return (
+      /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/im.test(value) ||
+      `${fieldName || "This"} field is not a valid phone number`
     );
   };
 }

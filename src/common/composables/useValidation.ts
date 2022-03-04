@@ -95,16 +95,33 @@ export function useValidation(
    * LOCAL VARIABLE:
    *  returns all the set of validation functions based on validation props
    */
-  const _validationArr = computed<Array<CallableFunction>>(() => {
+  const _validationArr = computed<
+    Array<{ validation: CallableFunction; params: unknown[] }>
+  >(() => {
     if (typeof validations?.value === "string") {
       const VALIDATION_NAMES = validations?.value.split("|") || "";
       const VALIDATIONS = [];
       for (let i = 0; i < VALIDATION_NAMES.length; i++) {
-        const validationName = VALIDATION_NAMES[i].trim();
+        const valEntity = VALIDATION_NAMES[i];
+        let validationName, validationParams: unknown[];
+        if (valEntity.includes("(") && valEntity.includes(")")) {
+          validationName = valEntity
+            .substring(0, valEntity.indexOf("("))
+            .trim();
+          validationParams = valEntity
+            .substring(valEntity.indexOf("(") + 1, valEntity.indexOf(")"))
+            .split(",");
+        } else {
+          validationName = valEntity.trim();
+          validationParams = [];
+        }
         if (validationName in validation) {
-          VALIDATIONS.push(
-            (validation as { [key: string]: CallableFunction })[validationName]
-          );
+          VALIDATIONS.push({
+            validation: (validation as { [key: string]: CallableFunction })[
+              validationName
+            ],
+            params: validationParams,
+          });
         } else if (validationName) {
           console.error(
             `useValidation: Unknown validation "${validationName}"`
@@ -128,7 +145,7 @@ export function useValidation(
       return validations?.value?.split("|").includes("required");
     } else {
       return (
-        _validationArr.value.filter((rule) => {
+        _validationArr.value.filter(({ validation: rule }) => {
           if (typeof rule() === "function") {
             const innerRule = rule("");
             return innerRule("").toString().includes("shouldn't be empty.");
@@ -149,13 +166,17 @@ export function useValidation(
     const _value = val;
     const _name = name?.value || "";
     for (let i = 0; i < rules.length; i++) {
-      const rule = rules[i];
+      const rule = rules[i].validation;
+      const params = rules[i].params;
+      console.log(params);
       let validate = false;
       if (typeof rule() === "function") {
-        const innerRule = rule();
+        const innerRule = rule(...params);
         validate = _name ? innerRule(_value, _name) : innerRule(_value);
       } else {
-        validate = _name ? rule(_value, _name) : rule(_value);
+        validate = _name
+          ? rule(...params, _value, _name)
+          : rule(...params, _value);
       }
       if (validate !== true) {
         return validate;
