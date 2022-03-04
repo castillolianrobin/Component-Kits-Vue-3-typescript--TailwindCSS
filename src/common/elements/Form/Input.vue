@@ -82,11 +82,6 @@ const props = defineProps({
   ...inputProps,
   ...inputBaseProps,
   ...validationProps,
-  modelValue: {
-    type: undefined as unknown as PropType<unknown>,
-    default: "",
-    required: false,
-  },
 });
 
 /** EMITS */

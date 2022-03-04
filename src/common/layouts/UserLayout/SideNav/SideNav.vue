@@ -44,6 +44,7 @@
 import { HomeIcon, UserGroupIcon, CogIcon } from "@heroicons/vue/solid";
 import SideNavItems from "./SideNavItems.vue";
 import { RouteLocationRaw, useRoute, useRouter } from "vue-router";
+import { RenderFunction } from "vue";
 
 // use router hook;
 const router = useRouter();
@@ -55,25 +56,30 @@ COMPONENT STATE
 ******************************/
 interface SideNavData {
   text: string;
-  iconName: string;
+  iconName: string | RenderFunction;
   url: string;
 }
 
 const items: Array<SideNavData> = [
   {
     text: "Dashboard",
-    iconName: HomeIcon.name,
+    iconName: HomeIcon,
     url: "/dashboard",
   },
   {
     text: "Users",
-    iconName: UserGroupIcon.name,
+    iconName: UserGroupIcon,
     url: "/users",
   },
   {
     text: "Account Settings",
-    iconName: CogIcon.name,
+    iconName: CogIcon,
     url: "/settings",
+  },
+  {
+    text: "Sandbox",
+    iconName: CogIcon,
+    url: "/sandbox",
   },
 ];
 
