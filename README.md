@@ -28,3 +28,7 @@ npm install
 ```
 npm run serve
 ```
+
+
+## [Non-Typescript version](https://github.com/castillolianrobin/Component-Kits-Vue-3-TailwindCSS-)
+
