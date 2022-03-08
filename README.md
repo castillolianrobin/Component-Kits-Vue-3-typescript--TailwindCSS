@@ -1,6 +1,6 @@
 # Vue 3 Component Kits [Vue 3 Composition API | Typescript | Tailwind]
 
-A set of vue components with tailwind css intended to improve the acceleration of development by providing reusable components similar to Vuetify but with the flexibility of Tailwind css.
+A set of vue components utilizing Tailwind css with the intention to improve the acceleration of development by providing reusable components similar to Vuetify but with the flexibility of Tailwind.
 
 ## [<img width="20" src="https://www.netlify.com/v3/img/components/logomark-dark.png" alt="Pinia logo"> Demo ](https://zen-wozniak-de473d.netlify.app/login)
 
