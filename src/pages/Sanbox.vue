@@ -230,8 +230,11 @@
 </template>
 
 <script setup lang="ts">
+import { useLayout } from "@/common/composables/useLayout";
 import { Form, App } from "@/common/elements/";
 import { ref } from "vue";
+
+useLayout("UserLayout");
 
 const test = ref("asdada");
 const files = ref([]);

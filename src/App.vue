@@ -9,6 +9,18 @@
         </router-view>
       </LayoutManager>
     </transition>
+
+    <a
+      href="https://github.com/castillolianrobin/Component-Kits-Vue-3-typescript--TailwindCSS"
+      target="_blank"
+      class="px-1 rounded fixed bottom-2 left-2 bg-white bg-opacity-60 cursor-pointer hover:bg-opacity-100 hover:scale-105 transition-colors"
+    >
+      <img
+        class="-my-1 h-9"
+        src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Emblem.png"
+        alt=""
+      />
+    </a>
   </div>
 </template>
 
