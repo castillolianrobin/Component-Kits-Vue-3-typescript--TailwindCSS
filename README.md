@@ -7,7 +7,7 @@ The components are customizable and themeable, specially in colors. All the comp
 ## [<img width="20" src="https://www.netlify.com/v3/img/components/logomark-dark.png" alt="Pinia logo"> Demo ](https://zen-wozniak-de473d.netlify.app/login)
 
 
-## Dependencies:
+## Dependencies
 
 - [TailwindCSS](https://tailwindcss.com/)
 - [Pinia](https://pinia.vuejs.org/)
@@ -20,9 +20,15 @@ The components are customizable and themeable, specially in colors. All the comp
 
 ## Project setup
 
+1. Install Dependencies
 ```
 npm install
 ```
+2. Serve project to localhost
 ```
 npm run serve
 ```
+
+
+## [Non-Typescript version](https://github.com/castillolianrobin/Component-Kits-Vue-3-TailwindCSS-)
+
