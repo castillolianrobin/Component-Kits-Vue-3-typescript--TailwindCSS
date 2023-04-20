@@ -2,7 +2,7 @@
 
 ## Note: 
 This project is deprecated. The latest version has been moved to vite as well as improved the overall code structure. 
-You can check the new version [ here ](https://zen-wozniak-de473d.netlify.app/login)
+You can check the new version [ here ](https://zen-wozniak-de473d.netlify.app/login).
 
 A set of vue components utilizing Tailwind css with the intention to improve the acceleration of development by providing reusable components similar to Vuetify but with the flexibility of Tailwind.
 
