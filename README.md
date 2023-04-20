@@ -2,7 +2,7 @@
 
 ## Note: 
 This project is deprecated. The latest version has been moved to vite as well as improved the overall code structure. 
-You can check the new version [ here ](https://zen-wozniak-de473d.netlify.app/login).
+You can check the new version [here](https://zen-wozniak-de473d.netlify.app/login).
 
 
 
@@ -12,6 +12,7 @@ A set of vue components utilizing Tailwind css with the intention to improve the
 
 The components are customizable and themeable, specially in colors. All the components uses custom colors declared in the tailwind config (primary, secondary, info, alert, error, success). The components itself are also flexible via props which would lessen the need to customize the component codebase.
 
+## [<img width="20" src="https://www.netlify.com/v3/img/components/logomark-dark.png" alt="Pinia logo"> Component List ](https://component-kits-vue3.netlify.app/)
 ## [<img width="20" src="https://www.netlify.com/v3/img/components/logomark-dark.png" alt="Pinia logo"> Demo ](https://zen-wozniak-de473d.netlify.app/login)
 
 
