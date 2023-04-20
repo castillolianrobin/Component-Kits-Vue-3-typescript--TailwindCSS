@@ -11,7 +11,7 @@
     </transition>
 
     <a
-      href="https://github.com/castillolianrobin/Component-Kits-Vue-3-typescript--TailwindCSS"
+      href="https://github.com/castillolianrobin/vue-vite-component-kits/"
       target="_blank"
       class="px-1 rounded fixed bottom-2 left-2 bg-white bg-opacity-60 cursor-pointer hover:bg-opacity-100 hover:scale-105 transition-colors"
     >

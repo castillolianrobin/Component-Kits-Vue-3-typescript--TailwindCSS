@@ -1,55 +1,3 @@
-<template>
-  <div class="p-1 h-full flex items-center justify-center bg-primary-900">
-    <App.Card class="flex p-0 rounded overflow-hidden">
-      <!-- Form -->
-      <Form.Form
-        v-model="form.valid"
-        class="pt-5 p-3 w-full md:w-64 flex flex-col justify-end items-center bg-primary-50"
-        @validated="login"
-      >
-        <!-- Username -->
-        <Form.TextField
-          v-model="form.username"
-          validateByForm
-          validateOnChange
-          label="Username"
-          validations="required"
-          :disabled="loading"
-        ></Form.TextField>
-
-        <!-- Password -->
-        <Form.TextField
-          v-model="form.password"
-          validateByForm
-          validateOnChange
-          type="password"
-          label="Password"
-          validations="required"
-          :disabled="loading"
-        ></Form.TextField>
-
-        <!-- Submit -->
-        <App.Btn submit class="mt-4 px-5" :loading="loading"> Login </App.Btn>
-
-        <!-- Error -->
-        <Form.Error class="text-smmt-1" :error="form.error"></Form.Error>
-
-        <p class="mt-auto text-sm text-gray-400">
-          Can't Login ?
-          <App.Tooltip
-            :tooltipText="`username: ${credentials.username} | password: ${credentials.password}`"
-            direction="top"
-          ></App.Tooltip>
-        </p>
-      </Form.Form>
-      <!-- Logo -->
-      <div class="w-64 h-80 flex flex-col justify-center">
-        <img src="@/assets/login-logo.png" />
-      </div>
-    </App.Card>
-  </div>
-</template>
-
 <script setup lang="ts">
 // Elements
 import { Form, App } from "@/common/elements";
@@ -111,4 +59,54 @@ function login() {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<template>
+  <div class="p-1 h-full flex items-center justify-center bg-primary-900">
+    <App.Card class="flex p-0 rounded overflow-hidden">
+      <!-- Form -->
+      <Form.Form
+        v-model="form.valid"
+        class="pt-5 p-3 w-full md:w-64 flex flex-col justify-end items-center bg-primary-50"
+        @validated="login"
+      >
+        <!-- Username -->
+        <Form.TextField
+          v-model="form.username"
+          validateByForm
+          validateOnChange
+          label="Username"
+          validations="required"
+          :disabled="loading"
+        ></Form.TextField>
+
+        <!-- Password -->
+        <Form.TextField
+          v-model="form.password"
+          validateByForm
+          validateOnChange
+          type="password"
+          label="Password"
+          validations="required"
+          :disabled="loading"
+        ></Form.TextField>
+
+        <!-- Submit -->
+        <App.Btn submit class="mt-4 px-5" :loading="loading"> Login </App.Btn>
+
+        <!-- Error -->
+        <Form.Error class="text-smmt-1" :error="form.error"></Form.Error>
+
+        <p class="mt-auto text-sm text-gray-400">
+          Can't Login ?
+          <App.Tooltip
+            :tooltipText="`username: ${credentials.username} | password: ${credentials.password}`"
+            direction="top"
+          ></App.Tooltip>
+        </p>
+      </Form.Form>
+      <!-- Logo -->
+      <div class="w-64 h-80 flex flex-col justify-center">
+        <img src="@/assets/login-logo.png" />
+      </div>
+    </App.Card>
+  </div>
+</template>

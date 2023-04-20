@@ -77,13 +77,17 @@ const items: Array<SideNavData> = [
     url: "/settings",
   },
   {
-    text: "Sandbox",
+    text: "Component Lists",
     iconName: CogIcon,
-    url: "/sandbox",
+    url: "https://component-kits-vue3.netlify.app/",
   },
 ];
 
 function goTo(url: RouteLocationRaw) {
-  router.push(url);
+  if (typeof url === "string" && url.includes("https://")) {
+    window.location.replace(url);
+  } else {
+    router.push(url);
+  }
 }
 </script>
